@@ -62,5 +62,5 @@ public interface IStack<E> {
    * @post The stack remains unchanged.
    * @return The list containing the items in the stack
    */
-  List<E> asFifoList(
+  List<E> asFifoList();
 }

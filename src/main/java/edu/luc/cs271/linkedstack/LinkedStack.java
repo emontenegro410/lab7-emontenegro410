@@ -1,24 +1,26 @@
 package edu.luc.cs271.linkedstack;
 
-
-        import java.util.ArrayList;
-        import java.util.List;
-        import java.util.NoSuchElementException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 public class LinkedStack<E> implements IStack<E> {
 
   /** The top most node of this stack. The stack gets pushed down from here. */
   private Node<E> top;
+  private int size = 0;
 
-  // TODO why don't we need an explicit constructor?
+  // Done TODO why don't we need an explicit constructor?
   /**
    * Answer: LinkedStack doesn't require an explicit constructor because the appropriate constructor
    * methods are in the Node class, and they are called when needed during the push() function. The
    * interface also gives us the appropriate methods.
    */
+
+
   @Override
   public E push(final E obj) {
-    // TODO
+    // Done TODO
     top = new Node<>(obj, top);
     return obj;
   }
@@ -37,7 +39,7 @@ public class LinkedStack<E> implements IStack<E> {
 
   @Override
   public E pop() {
-    // TODO
+    // Done TODO
     if (isEmpty()) {
       throw new NoSuchElementException();
     } else {
@@ -49,7 +51,7 @@ public class LinkedStack<E> implements IStack<E> {
 
   @Override
   public boolean isEmpty() {
-    // TODO
+    // Done TODO
     if (top == null) {
       return true;
     }
@@ -58,41 +60,38 @@ public class LinkedStack<E> implements IStack<E> {
     }
   }
 
-  /*
   @Override
   public List<E> asList() {
-    // TODO implement using an ArrayList preallocated with the right size
-    // TODO add any instance variable(s) required to support this
-    List<E> temp = new ArrayList<E>();
-    Node<E> travel = top;
-    while (travel != null) {
-      temp.add(travel.data);
-      travel = travel.next;
-    }
-    return temp;
+    final ArrayList<E> result = new ArrayList<>(size);
+    populateList(top, result); // DONE TODO replace null with the right reference
+    return result;
   }
-  */
 
-    @Override
-    public List<E> asList() {
-      final ArrayList<E> result = new ArrayList<>(size);
-      populateList(null, result); // TODO replace null with the right reference
-      return result;
-    }
   private void populateList(final Node<E> curr, final List<E> result) {
-    // TODO recursively populate the list in the desired order
+    // Done TODO recursively populate the list in the desired order
+    if (curr == null){
+      return;
+    }
+    else{
+      result.add(curr.data);
+    populateList(curr.next, result);
+  }
   }
 
   @Override
   public List<E> asFifoList() {
     final ArrayList<E> result = new ArrayList<>(size);
-    populateFifoList(null, result); // TODO replace null with the right reference
+    populateFifoList(top, result); // DONE TODO replace null with the right reference
     return result;
   }
 
   private void populateFifoList(final Node<E> curr, final List<E> result) {
-    // TODO recursively populate the list in the desired order
+    // Done TODO recursively populate the list in the desired order
+    if (curr == null) {
+      return;
+    } else {
+      result.add(0, curr.data);
+      populateFifoList(curr.next, result);
+    }
   }
-
-  }
-
+}
