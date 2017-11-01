@@ -22,6 +22,6 @@ The argument change from one recursive call to the next, by use of the next node
 ### Which of these methods can be implemented using while loops?
 
 All of these methods:
- -`populateList`
- -`populateFifoList`
- -`ReverseLines.printReverse`
+ - `populateList`
+ - `populateFifoList`
+ - `ReverseLines.printReverse`
