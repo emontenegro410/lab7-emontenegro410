@@ -11,17 +11,6 @@ public class ReverseLines {
 
   private static void printReverse(final Scanner input) {
     // Done TODO recursively read and print successive input lines until EOF, then print them out in reverse order
-   /* Old code fro lab 5
-    LinkedStack<String> reverser = new LinkedStack<String>();
-    while (input.hasNextLine()) {
-      final String line = input.nextLine();
-      reverser.push(line);
-    }
-    while (!reverser.isEmpty()) {
-      System.out.println(reverser.pop());
-    }
-   */
-
     if (!input.hasNextLine()) {
       return;
     }
